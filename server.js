@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import passport from 'passport';
 import authRoutes from './routes/auth.js';
-import './config/passport.js'; // Passport configuration
+import interviewRoutes from './routes/interviewRoutes.js';
 
 const app = express();
 
@@ -22,6 +22,7 @@ mongoose.connect('mongodb://localhost:27017/usersDB', {
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api', interviewRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
